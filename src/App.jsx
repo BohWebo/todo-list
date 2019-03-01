@@ -1,11 +1,15 @@
+/* eslint-disable no-return-assign */
 import React from 'react';
 import randomstring from 'randomstring';
 import TodoItem from './TodoItem';
+import Button from './Button';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      mode: 'All',
+      
       todos: [
         {
           id: 1,
@@ -34,10 +38,12 @@ class App extends React.Component {
         },
       ],
       itemText: '',
+      
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleChangeMode = this.handleChangeMode.bind(this);
   }
-
+  
   handleClick(id) {
     this.setState((prevState) => {
       const newTodos = prevState.todos.map((todo) => {
@@ -54,12 +60,15 @@ class App extends React.Component {
 
   handleItemAdedd() {
     this.setState(({todos, itemText}) => {
+      if (!itemText) return;
+
       let newTodoItem = {
         id: todos.length + 1,
         text: itemText,
         completed: false,
       };
 
+      // eslint-disable-next-line consistent-return
       return {
         todos: [...todos, newTodoItem],
         itemText: '',
@@ -71,15 +80,30 @@ class App extends React.Component {
     this.setState({ itemText: text });
   }
 
+  handleChangeMode(mode) {
+    this.setState({ mode });
+  }
+
+  makeTodosforRender() {
+    const { mode, todos } = this.state;
+    let todosForRender = todos;
+    if (mode === 'Active') {
+      todosForRender = todos.filter(item => item.completed === false);
+    } else if (mode === 'Completed') {
+      todosForRender = todos.filter(item => item.completed === true);
+    }
+    return todosForRender;
+  }
+
   render() {
     const { todos, itemText } = this.state;
-    const hasLeftTodos = todos.filter((item) => item.completed === false)
+    const hasLeftTodos = todos.filter(item => item.completed === false);
+    const todosForRender = this.makeTodosforRender();
     return (
       <div className="todo-list">
-      
         {
-          todos.map(todo => (
-            <>  
+          todosForRender.map(todo => (
+            <>
               <TodoItem
                 key={randomstring.generate(5)}
                 id={todo.id}
@@ -103,6 +127,21 @@ class App extends React.Component {
         >
           add
         </button>
+
+        <div className="todo_filter-buttons">
+          <Button onClick={this.handleChangeMode}>
+            All
+          </Button>
+
+          <Button onClick={this.handleChangeMode}>
+            Active
+          </Button>
+
+          <Button onClick={this.handleChangeMode}>
+            Completed
+          </Button>
+        </div>
+
         <div className="todo-hasleft">
           <p>{hasLeftTodos.length} has left</p>
         </div>

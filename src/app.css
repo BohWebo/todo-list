@@ -141,3 +141,30 @@
     opacity: 0;
   }
 
+
+  .todo_filter-button {
+    margin: 50px 10px 10px 10px ;
+    background-color: whitesmoke;
+    border: 1px dashed lightslategray; 
+    border-radius: 4px;
+    height: 20px;
+    font-size: 15px;  
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+
+  }
+  
+  
+  .todo_filter-button:hover{
+    
+    cursor: pointer;
+  }
+  .todo_filter-button:active{ 
+    transform: translateY(1px);
+    filter: saturate(150%);
+    outline: none;
+  
+  }
+  .todo_filter-button:focus{
+    outline: none;
+  }
+  
