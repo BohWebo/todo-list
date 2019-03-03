@@ -1,0 +1,170 @@
+  .todo-list {
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #efefef;
+    box-shadow:
+    /* The top layer shadow */
+        0 1px 1px rgba(0,0,0,0.15),
+            /* The second layer */
+        0 10px 0 -5px #eee,
+            /* The second layer shadow */
+        0 10px 1px -4px rgba(0,0,0,0.15),
+            /* The third layer */
+        0 20px 0 -10px #eee,
+            /* The third layer shadow */
+        0 20px 1px -9px rgba(0,0,0,0.15);
+    padding: 30px;
+  }
+  .todo-hasleft{
+    font-family: Roboto, sans-serif;
+    text-align: left;
+    width: 100%;
+    color: lightslategray;
+  }
+  .todo-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px 20px 0;
+    width: 70%;
+    border-bottom: 1px solid #cecece;
+    font-family: Roboto, sans-serif;
+    font-weight: 100;
+    font-size: 20px;
+    color: #333333;
+  }
+  .checked { 
+    font-style: italic;
+    color: #cdcdcd;
+    text-decoration: line-through;
+  }
+  
+  input[type=checkbox] {
+    margin-right: 10px;
+    font-size: 30px;    
+  }
+  
+  input[type=checkbox]:focus {
+    outline: 0;
+  }
+  .todo_input-field{
+    margin: 15px;
+    border-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.24);
+    border-radius: 4px;
+  
+  }
+  .todo_button-add{
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 0;
+    border: solid 1px; /* Safari */
+    border-color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.24);
+    border-radius: 4px;
+    padding: 0 16px;
+    min-width: 64px;
+    height: 36px;
+    vertical-align: middle;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    background-color: transparent;
+    font-family: var(--matter-font-family, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 34px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  .todo_button-add::-moz-focus-inner {
+    border: none;
+  }
+  
+  /* Highlight, Ripple */
+  .todo_button-add::before,
+  .todo_button-add::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3px;
+    opacity: 0;
+  }
+  
+  .todo_button-add::before {
+    background-color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+    transition: opacity 0.2s;
+  }
+  
+  .todo_button-add::after {
+    background: radial-gradient(circle at center, currentColor 1%, transparent 1%) center/10000% 10000% no-repeat;
+    transition: opacity 1s, background-size 0.5s;
+  }
+  
+  /* Hover, Focus */
+  .todo_button-add:hover::before {
+    opacity: 0.04;
+  }
+  
+  .todo_button-add:focus::before {
+    opacity: 0.12;
+  }
+  
+  .todo_button-add:hover:focus::before {
+    opacity: 0.16;
+  }
+  
+  /* Active */
+  .todo_button-add:active::after {
+    opacity: 0.16;
+    background-size: 100% 100%;
+    transition: background-size 0s;
+  }
+  
+  /* Disabled */
+  .todo_button-add:disabled {
+    color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.38);
+    background-color: transparent;
+    cursor: initial;
+  }
+  
+  .todo_button-add:disabled::before,
+  .todo_button-add:disabled::after {
+    opacity: 0;
+  }
+
+
+  .todo_filter-button {
+    margin: 50px 10px 10px 10px ;
+    background-color: whitesmoke;
+    border: 1px dashed lightslategray; 
+    border-radius: 4px;
+    height: 20px;
+    font-size: 15px;  
+    color: rgb(var(--matter-primary-rgb, 33, 150, 243));
+
+  }
+  
+  
+  .todo_filter-button:hover{
+    
+    cursor: pointer;
+  }
+  .todo_filter-button:active{ 
+    transform: translateY(1px);
+    filter: saturate(150%);
+    outline: none;
+  
+  }
+  .todo_filter-button:focus{
+    outline: none;
+  }
+  
